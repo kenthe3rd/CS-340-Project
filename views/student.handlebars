@@ -1,0 +1,193 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>student</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div>
+	<form method="post" action="student.html">
+		<fieldset>
+			<legend>Add new student:</legend>
+			<p>Student Name: <input type="text" name="student"></p>
+			<p>Blood Type: <select name="blood"></p>
+				<option value="1">pure-blood</option>
+				<option value="2">half-blood</option>
+				<option value="3">muggle</option>				<!- need to update characters so it's either muggle-born or muggle ->
+			</select>
+			
+			<p>House: <select name="dorm"></p>			<! Need to update this ->
+				<option value="1">Gryffindor</option>
+				<option value="2">Slytherin</option>
+				<option value="3">Ravenclaw</option>				<!- need to update characters so it's either muggle-born or muggle ->
+				<option value="4">Hufflepuff</option>
+			</select>
+			
+			<p>Current Location: <select name="locatedAt"></p>			<! Need to update this ->
+				<option value="">Existing Location names populated here</option>
+			</select>
+			
+			<p><input type="submit" name ="add" value="Add Student"/></p>
+		 
+		</fieldset>
+	</form>
+</div>
+
+
+<div>
+	<h3>Students:</h3>
+	<table border="1">
+		<thead> 
+			<th>name</th> 
+			<th>blood</th>
+			<th>dorm</th>
+			<th>locatedAt</th> 	
+		</thead> 
+		<tbody> 
+			<tr> 
+				<td>Harry Potter</td> 
+				<td>half-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr> 
+			
+			<tr> 
+				<td>Hermione Granger</td> 
+				<td>muggle</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Ronald Weasley</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Neville Longbottom</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Ginevra Weasley</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Draco Malfoy</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Gregory Goyle</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Vincent Crabbe</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Luna Lovegood</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Cho Chang</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Padma Patil</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Cedric Diggory</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Hannah Abbott</td> 
+				<td>pure-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Susan Bones</td> 
+				<td>half-blood</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			<tr> 
+				<td>Myrtle Warren</td> 
+				<td>muggle</td> 
+				<td></td>
+				<td></td>
+				<td><button onclick="deleteStudent()">Delete</button></td>
+				<td><a href="/student/">Update</a></td>
+			</tr>
+			
+			
+			
+				
+		</tbody> 
+	</table> 
+</div>
+</body>
+</html>

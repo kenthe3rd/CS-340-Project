@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mutate Class Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="classAdder">
+        <h4>Add new class:</h4>
+        <form>
+            <input type="text" placeholder="Class name"><br><br>
+            <select>
+                <option value="Core">Core</option>
+                <option value="Elective">Elective</option>
+                <option value="Extra-curricular">Extra-curricular</option>
+            </select><br><br>
+            <input type="submit" value="Add Class">
+        </form>
+    </div>
+
+    <div id="classRemover">
+        <h4>Remove existing class</h4>
+        <form>
+            <select>
+                <option value="">Existing class names populated here</option>
+            </select><br><br>
+            <input type="submit" value="Remove Class">
+        </form>
+    </div>
+
+    <div id="classUpdater">
+        <h4>Update existing class's category</h4>
+        <form>
+            <select>
+                <option value="">Existing class names populated here</option>
+            </select><br><br>
+            <select>
+                <option value="Core">Core</option>
+                <option value="Elective">Elective</option>
+                <option value="Extra-curricular">Extra-curricular</option>
+            </select><br><br>
+            <input type="submit" value="Update Class">
+        </form>
+    </div>
+
+    <div id="classLister">
+        <h4>List existing classes</h4>
+        <form>
+            <input type="submit" value="List Classes">
+        </form>
+        <table border="1">
+            <thead>
+                <th>Course</th>
+                <th>Category</th>
+            </thead>
+            {{#each classes}}
+                <tr>
+                    <td>{{course}}</td>
+                    <td>{{category}}</td>
+                    <td><button onclick="deleteClass({{class_id}})">**DELETE**</button></td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</body>
+</html>

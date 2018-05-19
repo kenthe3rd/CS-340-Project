@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>isFriendOf</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div>
+	<form method="post" action="isFriendOf.html">
+		<fieldset>
+			<legend>Add new friendship:</legend>
+			<p>Student Name: <select name="student"></p>			<! Need to update this ->
+				<option value="">Blehhhh</option>
+			</select>
+			
+			<p>Friend Name: <select name="friend"></p>			<! Need to update this ->
+				<option value="">Blehhhh</option>
+			</select>
+			
+			<p><input type="submit" name ="add" value="Add Friendship"/></p>
+		 </fieldset>
+	</form>
+</div>
+
+
+<div>
+	<h3>Friends:</h3>
+	<table border="1">
+		<thead> 
+			<th>student</th> 
+			<th>friend</th>	
+		</thead> 
+		<tbody> 
+			{{#each student}}
+			<tr> 
+				<td>{{studentName}}</td>
+				<td>{{friend}}</td>
+				<td><button onclick="deleteFriend()">**DELETE**</button></td>
+			</tr> 
+			{{/each}}
+		</tbody> 
+	</table> 
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html>
+<head>
+	<title>house</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+	<h3>Houses:</h3>
+	<table border="1">
+		<thead> 
+			<th>tower</th> 
+			<th>colors</th> 
+			<th>animal</th>
+			<th>founder</th>			
+		</thead> 
+		<tbody> 
+			{{#each houses}}
+			<tr>
+				<td>{{tower}}</td>
+				<td>{{colors}}</td>
+				<td>{{animal}}</td>
+				<td>{{founder}}</td>
+				<td><button onclick="deleteHouse({{house_id}})">**DELETE**</button></td>
+			</tr>
+			{{/each}}
+		</tbody> 
+	</table> 
+</body>
+</html>
