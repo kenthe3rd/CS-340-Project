@@ -28,10 +28,7 @@ app.use('/location', function(req, res){
     res.render('location');
 });
 
-app.use('/isFriendOf', function(req, res){
-    res.status(200);
-    res.render('isFriendOf');
-});
+app.use('/isFriendOf', require('./isFriendOf.js'));
 
 app.use('/', function(req, res){
     res.status(200);

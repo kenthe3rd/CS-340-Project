@@ -3,11 +3,11 @@ module.exports = function(){
     var router = express.Router();
 
     function getFriends(res, mysql, context, complete){
-        mysql.pool.query("SELECT house_id, tower, colors, animal, founder FROM house", function(error, results, fields){
+        mysql.pool.query("SELECT DISTINCT t1.name AS n1, t2.name AS n2 FROM (SELECT student.name, isFriendOf.student FROM isFriendOf INNER JOIN student ON isFriendOf.student = student.student_id) AS t1 INNER JOIN (SELECT student.name, isFriendOf.student FROM isFriendOf INNER JOIN student ON isFriendOf.friend_id = student.student_id) AS t2 ON t1.student = t2.student", function(error, results, fields){
             if(error){
                 res.end();
             }
-            context.houses = results;
+            context.relationship = results;
             complete();
             
         });
