@@ -8,7 +8,7 @@ INSERT INTO isFriendOf (student, friend_id) VALUES ([studentValArg], [friendIdAr
 DELETE FROM isFriendOf WHERE student = [studentValArg] AND friend_id = [friendIdArg]; 
 
 --generate list of friendships
-SELECT DISTINCT t1.name, t2.name FROM
+SELECT DISTINCT t1.name AS n1, t2.name AS n2 FROM
 (SELECT student.name, isFriendOf.student FROM isFriendOf
 INNER JOIN student ON isFriendOf.student = student.student_id) AS t1
 INNER JOIN 
