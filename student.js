@@ -9,14 +9,13 @@ module.exports = function(){
             }
             context.students = results;
             complete();
-            
         });
     }
 
     router.post('/delete', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM student WHERE student_id = ?";
-        var inserts = [req.body.student_id];
+        var inserts = [req.body.student_to_delete];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 console.log("An error occurred while attempting the delete operation");
