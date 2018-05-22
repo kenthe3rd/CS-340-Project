@@ -22,10 +22,8 @@
 
     <div id="classRemover">
         <h4>Remove existing class</h4>
-        <form>
-            <select>
-                <option value="">Existing class names populated here</option>
-            </select><br><br>
+        <form action="/class/delete" method="post">
+            <input type="text" placeholder="class_id to delete" name="class_id"> <br> <br>
             <input type="submit" value="Remove Class">
         </form>
     </div>
@@ -54,12 +52,13 @@
             <thead>
                 <th>Course</th>
                 <th>Category</th>
+                <th>class_id</th>
             </thead>
             {{#each classes}}
                 <tr>
                     <td>{{course}}</td>
                     <td>{{category}}</td>
-                    <td><button onclick="deleteClass({{class_id}})">**DELETE**</button></td>
+                    <td>{{class_id}}</td>
                 </tr>
             {{/each}}
         </table>

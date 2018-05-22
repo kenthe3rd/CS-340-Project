@@ -28,6 +28,20 @@ module.exports = function(){
         });
     })
 
+    router.post('/delete', function(req, res){
+        console.log(req.body.class_id);
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM class WHERE class_id = ?";
+        var inserts = [req.body.class_id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.end();
+            } else {
+                res.redirect('/class');
+            }
+        });
+    })
+
     router.get('/', function(req, res){
         var context = {};
         var mysql = req.app.get('mysql');
