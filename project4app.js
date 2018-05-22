@@ -14,10 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/house', require('./house.js'));
 
-app.use('/student', function(req, res){
-    res.status(200);
-    res.render('student');
-});
+app.use('/student', require('./student.js').default);
 
 app.use('/class', require('./class.js'));
 
