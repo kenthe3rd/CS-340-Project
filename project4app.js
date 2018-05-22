@@ -14,16 +14,13 @@ app.use(bodyParser.json());
 
 app.use('/house', require('./house.js'));
 
-app.use('/student', require('./student.js').default);
+app.use('/student', require('./student.js'));
 
 app.use('/class', require('./class.js'));
 
 app.use('/takes', require('./takes.js'));
 
-app.use('/location', function(req, res){
-    res.status(200);
-    res.render('location');
-});
+app.use('/location', require('./location.js'));
 
 app.use('/isFriendOf', require('./isFriendOf.js'));
 
