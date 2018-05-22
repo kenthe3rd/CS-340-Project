@@ -19,13 +19,21 @@
             <input type="submit" value="Add House" id="submitNewHouse">
         </form>
     </div>
+	<div>
+		<h4>Delete house</h4>
+		<form action="/house/delete" method="post">
+			<input type="text" placedholder="house_id to delete" name="house_id">
+			<input type="submit" value="Delete House">
+		</form>
+	</div>
 	<h3>Houses:</h3>
 	<table border="1">
 		<thead> 
 			<th>tower</th> 
 			<th>colors</th> 
 			<th>animal</th>
-			<th>founder</th>			
+			<th>founder</th>
+			<th>house_id</th>		
 		</thead> 
 		<tbody> 
 			{{#each houses}}
@@ -34,7 +42,7 @@
 				<td>{{colors}}</td>
 				<td>{{animal}}</td>
 				<td>{{founder}}</td>
-				<td><button onclick="deleteHouse({{house_id}})">**DELETE**</button></td>
+				<td>{{house_id}}</td>
 			</tr>
 			{{/each}}
 		</tbody> 
