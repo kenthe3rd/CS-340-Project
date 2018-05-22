@@ -21,7 +21,20 @@ module.exports = function(){
             res.render('house', context);
         }
     })   
-        
+    
+     router.post('/delete', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM house WHERE house_id = ?";
+        var inserts = [req.body.house_id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.redirect('/house');
+            } else {
+                res.redirect('/house');
+            }
+        });
+    })
+
     router.post('/', function(req, res){
         if(req.body.tower && req.body.colors && req.body.animal && req.body.founder){
             var mysql = req.app.get('mysql');
