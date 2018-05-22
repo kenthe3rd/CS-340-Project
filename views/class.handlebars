@@ -9,14 +9,14 @@
 <body>
     <div id="classAdder">
         <h4>Add new class:</h4>
-        <form>
-            <input type="text" placeholder="Class name"><br><br>
-            <select>
+        <form id="classAddForm" action="/class" method="post">
+            <input type="text" placeholder="Class name" name="className"><br><br>
+            <select name="category">
                 <option value="Core">Core</option>
                 <option value="Elective">Elective</option>
                 <option value="Extra-curricular">Extra-curricular</option>
             </select><br><br>
-            <input type="submit" value="Add Class">
+            <input type="submit" value="Add Class" id="submitNewClass">
         </form>
     </div>
 
