@@ -9,6 +9,16 @@
 
 </head>
 <body>
+	<div id="houseAdder">
+        <h4>Add new house:</h4>
+        <form id="houseAddForm" action="/house" method="post">
+            <input type="text" placeholder="House name" name="tower">
+            <input type="text" placeholder="House colors" name="colors">
+            <input type="text" placeholder="House animal" name="animal">
+            <input type="text" placeholder="House founder" name="founder">
+            <input type="submit" value="Add House" id="submitNewHouse">
+        </form>
+    </div>
 	<h3>Houses:</h3>
 	<table border="1">
 		<thead> 
