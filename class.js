@@ -29,13 +29,13 @@ module.exports = function(){
     })
 
     router.post('/delete', function(req, res){
-        console.log(req.body.class_id);
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM class WHERE class_id = ?";
         var inserts = [req.body.class_id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
-                res.end();
+                console.log("An error occurred while attempting the delete operation");
+                res.redirect('/class');
             } else {
                 res.redirect('/class');
             }
