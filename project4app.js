@@ -24,6 +24,8 @@ app.use('/location', require('./location.js'));
 
 app.use('/isFriendOf', require('./isFriendOf.js'));
 
+app.use('/isLocatedAt', require('./isLocatedAt.js'));
+
 app.use('/', function(req, res){
     res.status(200);
     res.render('index');
