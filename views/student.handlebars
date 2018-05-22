@@ -17,13 +17,13 @@
 			<p>Blood Type: <select name="blood"></p>
 				<option value="pure-blood">pure-blood</option>
 				<option value="half-blood">half-blood</option>
-				<option value="muggle">muggle</option>				<!- need to update characters so it's either muggle-born or muggle ->
-			</select>
+				<option value="muggle">muggle</option>	
+			</select>		
 			
 			<p>House: <select name="dorm"></p>			<! Need to update this ->
 				<option value="1">Gryffindor</option>
 				<option value="2">Slytherin</option>
-				<option value="3">Ravenclaw</option>				<!- need to update characters so it's either muggle-born or muggle ->
+				<option value="3">Ravenclaw</option>				
 				<option value="4">Hufflepuff</option>
 			</select>
 			
@@ -39,7 +39,11 @@
 
 <div>
 	<form method="post" action="/student/delete">
-		<input type="text" name="student_id" placeholder="student_id to delete">
+		<select name="student_to_delete">
+		{{#each students}}
+			<option value="{{student_id}}">{{name}}</option>
+		{{/each}}
+		</select>
 		<input type="submit" value="Delete student">
 	</form>
 </div>
