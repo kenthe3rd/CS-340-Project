@@ -42,6 +42,22 @@ module.exports = function(){
         });
     })
 
+    router.post('/update', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "UPDATE class SET category = ? WHERE class_id = ?";
+        var inserts = [req.body.category, req.body.class_id];
+        if(req.body.category && req.body.class_id){
+            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                if(error){
+                    console.log("An error occurred while attempting the update operation");
+                } 
+                res.redirect('/class');
+            })
+        } else {
+            res.redirect('/class');
+        }
+    })
+
     router.get('/', function(req, res){
         var context = {};
         var mysql = req.app.get('mysql');
