@@ -20,6 +20,23 @@ module.exports = function(){
         function complete(){
             res.render('house', context);
         }
+    })   
+        
+    router.post('/', function(req, res){
+        if(req.body.tower && req.body.colors && req.body.animal && req.body.founder){
+            var mysql = req.app.get('mysql');
+            var sql = "INSERT INTO house (tower, colors, animal, founder) VALUES (?,?,?,?)";
+            var inserts = [req.body.tower, req.body.colors, req.body.animal, req.body.founder];
+            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                if(error){
+                    res.end();
+                } else {
+                    res.redirect('/house');
+                }
+            });
+        } else {
+            res.redirect('/house');
+        }
     })
     return router;
 }();
