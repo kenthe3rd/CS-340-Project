@@ -13,13 +13,65 @@ module.exports = function(){
         });
     }
 
+    function getStudents(res, mysql, context){
+        mysql.pool.query("SELECT student_id, name FROM student ORDER BY name", function(error, results, fields){
+            if(error){
+                res.end();
+            }
+            context.students = results;
+        })
+    }
+	
+	function getClasses(res, mysql, context){
+        mysql.pool.query("SELECT class_id, course FROM class ORDER BY course", function(error, results, fields){
+            if(error){
+                res.end();
+            }
+            context.courses = results;
+        })
+    }
+
     router.get('/', function(req, res){
         var context = {};
         var mysql = req.app.get('mysql');
+        getStudents(res, mysql, context);
+		getClasses(res, mysql, context);
         getTakes(res, mysql, context, complete);
         function complete(){
             res.render('takes', context);
         }
+    })
+
+    router.post('/delete', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM takes WHERE student_id = ? AND class_id = ?";
+        var inserts = [req.body.student, req.body.course];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log("An error occurred while attempting to withdraw from course.");
+            }
+        });
+        res.redirect('/takes');
+    })
+
+    router.post('/', function(req, res){
+        if(req.body.student != req.body.course){
+            var mysql = req.app.get('mysql');
+            var sql = "INSERT INTO takes (student_id, class_id) VALUES (?,?)";
+            var inserts = [req.body.student, req.body.course];
+            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                if(error){
+                    console.log("An error occurred when attempting to enrol in course.");
+                }
+            });
+        } else {
+            console.log("ERROR");
+        }
+        res.redirect('/takes');
+    })
+
+    router.post('/delete', function(req, res){
+
     })
     return router;
 }();
