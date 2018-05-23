@@ -7,33 +7,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
+
 <div>
-	<form method="post" action="takes.html">
+	<form method="post" action="/takes">
 		<fieldset>
 			<legend>Enroll student in class:</legend>
-			<p>Student Name:</p>	
-			<form>
-				<select>
-					<option value="">Existing Student names populated here</option>
-				</select>
-			</form>
+			<p>Student Name: <select name="student"></p>			
+				{{#each students}}
+					<option value="{{student_id}}">{{name}}</option>
+				{{/each}}
+			</select>
 			
-			<p>Course Name:</p>	
-			<form>
-				<select>
-					<option value="">Existing Course names populated here</option>
-				</select>
-			</form>
-			<br>
-			<input type="submit" value="Update">
-
+			<p>Course Name: <select name="course"></p>			
+				{{#each courses}}
+					<option value="{{class_id}}">{{course}}</option>
+				{{/each}}
+			</select>
 			
+			<p><input type="submit" name ="add" value="Submit"/></p>
 		 </fieldset>
 	</form>
 </div>
 
+<div>
+	<form method="post" action="/takes/delete">
+		<fieldset>
+			<legend>Withdraw student from a class:</legend>
+			
+			<p>Student Name: <select name="student"></p>
+				{{#each students}}
+					<option value="{{student_id}}">{{name}}</option>
+				{{/each}}
+			</select> 
+			
+			<p>Course Name: <select name="course"></p>
+				{{#each courses}}
+					<option value="{{class_id}}">{{course}}</option>
+				{{/each}}
+			</select>
+			
+			<p><input type="submit" value="Submit"></p>
+		</fieldset>
+	</form>
+</div>
 
 <div>
 	<h3>Class Load:</h3>
@@ -47,7 +64,6 @@
 			<tr> 
 				<td>{{name}}</td>
 				<td>{{course}}</td>
-				<td><button onclick="deleteCourse({{takes_id}})">**DELETE**</button></td>
 			</tr> 
 			{{/each}}
 				
@@ -55,5 +71,6 @@
 		</tbody> 
 	</table> 
 </div>
+
 </body>
 </html>
