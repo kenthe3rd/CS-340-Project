@@ -10,15 +10,19 @@
 <body>
 
 <div>
-	<form method="post" action="isFriendOf.html">
+	<form method="post" action="/isFriendOf">
 		<fieldset>
 			<legend>Add new friendship:</legend>
-			<p>Student Name: <select name="student"></p>			<! Need to update this ->
-				<option value="">Blehhhh</option>
+			<p>Student Name: <select name="student"></p>			
+				{{#each students}}
+					<option value="{{student_id}}">{{name}}</option>
+				{{/each}}
 			</select>
 			
-			<p>Friend Name: <select name="friend"></p>			<! Need to update this ->
-				<option value="">Blehhhh</option>
+			<p>Friend Name: <select name="friend"></p>			
+				{{#each students}}
+					<option value="{{student_id}}">{{name}}</option>
+				{{/each}}
 			</select>
 			
 			<p><input type="submit" name ="add" value="Add Friendship"/></p>
@@ -26,6 +30,24 @@
 	</form>
 </div>
 
+<div>
+	<h4>Delete a Friendship</h4>
+	<form method="post" action="/isFriendOf/delete">
+		<span>Student:</span>
+		<select name="student">
+			{{#each students}}
+				<option value="{{student_id}}">{{name}}</option>
+			{{/each}}
+		</select> <br>
+		<span>Friend:</span>
+		<select name="friend">
+			{{#each students}}
+				<option value="{{student_id}}">{{name}}</option>
+			{{/each}}
+		</select><br>
+		<input type="submit" value="Delete Friendship">
+	</form>
+</div>
 
 <div>
 	<h3>Friends:</h3>
@@ -39,7 +61,6 @@
 			<tr> 
 				<td>{{n1}}</td>
 				<td>{{n2}}</td>
-				<td><button onclick="deleteFriend()">**DELETE**</button></td>
 			</tr> 
 			{{/each}}
 		</tbody> 
