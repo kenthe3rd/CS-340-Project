@@ -10,12 +10,12 @@
     <div id="classAdder">
         <h4>Add new class:</h4>
         <form id="classAddForm" action="/class" method="post">
-            <input type="text" placeholder="Class name" name="className"><br><br>
+            <input type="text" placeholder="Class name" name="className">
             <select name="category">
                 <option value="Core">Core</option>
                 <option value="Elective">Elective</option>
                 <option value="Extra-curricular">Extra-curricular</option>
-            </select><br><br>
+            </select>
             <input type="submit" value="Add Class" id="submitNewClass">
         </form>
     </div>
@@ -23,7 +23,11 @@
     <div id="classRemover">
         <h4>Remove existing class</h4>
         <form action="/class/delete" method="post">
-            <input type="text" placeholder="class_id to delete" name="class_id"> <br> <br>
+            <select name="class_id">
+                {{#each classes}}
+                    <option value="{{class_id}}">{{course}}</option>
+                {{/each}}
+            </select>
             <input type="submit" value="Remove Class">
         </form>
     </div>
@@ -31,12 +35,16 @@
     <div id="classUpdater">
         <h4>Update existing class's category</h4>
         <form action="/class/update" method="post">
-            <input type="text" name="class_id" placeholder="class_id to update">
+            <select name="class_id">
+                {{#each classes}}
+                    <option value="{{class_id}}">{{course}}</option>
+                {{/each}}
+            </select>
             <select name="category">
                 <option value="Core">Core</option>
                 <option value="Elective">Elective</option>
                 <option value="Extra-curricular">Extra-curricular</option>
-            </select><br><br>
+            </select>
             <input type="submit" value="Update Class">
         </form>
     </div>
@@ -47,13 +55,11 @@
             <thead>
                 <th>Course</th>
                 <th>Category</th>
-                <th>class_id</th>
             </thead>
             {{#each classes}}
                 <tr>
                     <td>{{course}}</td>
                     <td>{{category}}</td>
-                    <td>{{class_id}}</td>
                 </tr>
             {{/each}}
         </table>
