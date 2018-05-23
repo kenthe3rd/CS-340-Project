@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getClasses(res, mysql, context, complete){
-        mysql.pool.query("SELECT * FROM class", function(error, results, fields){
+        mysql.pool.query("SELECT * FROM class ORDER BY course", function(error, results, fields){
             if(error){
                 res.end();
             }
