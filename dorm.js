@@ -27,13 +27,12 @@ module.exports = function(){
         var inserts = [req.body.dorm, req.body.student];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
-                console.log("An error occurred when attempting to add a new student");
+                console.log("An error occurred when attempting to update the dorm");
                 res.end();
             } else {
                 res.redirect('/dorm');
             }
         });
-    
     })
 
     router.get('/', function(req, res){
