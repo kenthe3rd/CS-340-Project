@@ -27,7 +27,11 @@
 <div>
 	<h4>Delete location</h4>
 	<form action="/location/delete" method="post">
-		<input type="text" placeholder="location_id to delete" name="location_id">
+		<select name="location_id">
+			{{#each locations}}
+				<option value="{{location_id}}">{{place}}</option>
+			{{/each}}
+		</select>
 		<input type="submit" value="Delete location">
 	</form>
 </div>
@@ -38,14 +42,12 @@
 		<thead> 
 			<th>place</th> 
 			<th>campus</th> 	
-			<th>location_id</th>		
 		</thead> 
 		<tbody> 
 			{{#each locations}}
 			<tr>
 				<td>{{place}}</td>
 				<td>{{campus}}</td>
-				<td>{{location_id}}</td>
 			</tr>
 			{{/each}}
 		</tbody> 

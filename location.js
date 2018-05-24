@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getLocations(res, mysql, context, complete){
-        mysql.pool.query("SELECT location_id, place, campus FROM location", function(error, results, fields){
+        mysql.pool.query("SELECT location_id, place, campus FROM location ORDER BY place", function(error, results, fields){
             if(error){
                 res.end();
             }
