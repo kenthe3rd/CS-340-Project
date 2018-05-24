@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getTakes(res, mysql, context, complete){
-        mysql.pool.query("SELECT DISTINCT t1.name, t2.course FROM (SELECT student.name, takes.student_id, takes.class_id FROM takes INNER JOIN student ON takes.student_id = student.student_id) AS t1 INNER JOIN (SELECT class.course, takes.class_id FROM takes INNER JOIN class ON takes.class_id = class.class_id) AS t2 ON t1.class_id = t2.class_id", function(error, results, fields){
+        mysql.pool.query("SELECT DISTINCT t1.name, t2.course FROM (SELECT student.name, takes.student_id, takes.class_id FROM takes INNER JOIN student ON takes.student_id = student.student_id) AS t1 INNER JOIN (SELECT class.course, takes.class_id FROM takes INNER JOIN class ON takes.class_id = class.class_id) AS t2 ON t1.class_id = t2.class_id ORDER BY t1.name", function(error, results, fields){
             if(error){
                 res.end();
             }
@@ -54,6 +54,17 @@ module.exports = function(){
         res.redirect('/takes');
     })
 
+    router.post('/transfer', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "UPDATE takes SET class_id = ? WHERE student_id = ? AND class_id = ?";
+        var inserts = [req.body.transferTo, req.body.student, req.body.transferFrom];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log("An error occurred while attempting to transfer to/from course.");
+            }
+        });
+        res.redirect('/takes');
+    })
     router.post('/', function(req, res){
         if(req.body.student != req.body.course){
             var mysql = req.app.get('mysql');

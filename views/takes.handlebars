@@ -51,7 +51,31 @@
 		</fieldset>
 	</form>
 </div>
-
+<div>
+	<form method="post" action="/takes/transfer">
+		<fieldset>
+			<legend>Transfer a student from one class to another:</legend>
+			
+			<p>Student Name: <select name="student"></p>
+				{{#each students}}
+					<option value="{{student_id}}">{{name}}</option>
+				{{/each}}
+			</select> 
+			
+			<p>Transfer From: <select name="transferFrom"></p>
+				{{#each courses}}
+					<option value="{{class_id}}">{{course}}</option>
+				{{/each}}
+			</select>
+			<p>Transfer To: <select name="transferTo"></p>
+				{{#each courses}}
+					<option value="{{class_id}}">{{course}}</option>
+				{{/each}}
+			</select>
+			<p><input type="submit" value="Submit"></p>
+		</fieldset>
+	</form>
+</div>
 <div>
 	<h3>Class Load:</h3>
 	<table border="1">
