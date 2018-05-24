@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
     function getStudents(res, mysql, context, complete){
-        mysql.pool.query("SELECT student.student_id, student.name, location.place FROM student INNER JOIN location ON location.location_id = student.locatedAt", function(error, results, fields){
+        mysql.pool.query("SELECT student.student_id, student.name, location.place FROM student INNER JOIN location ON location.location_id = student.locatedAt ORDER BY student.name", function(error, results, fields){
             if(error){
                 res.end();
             }
@@ -13,7 +13,7 @@ module.exports = function(){
     }
 
     function getLocations(res, mysql, context){
-        mysql.pool.query("SELECT location_id, place FROM location", function(error, results, fields){
+        mysql.pool.query("SELECT location_id, place FROM location ORDER BY place", function(error, results, fields){
             if(error){
                 res.end();
             }
