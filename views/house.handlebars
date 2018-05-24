@@ -22,7 +22,11 @@
 	<div>
 		<h4>Delete house</h4>
 		<form action="/house/delete" method="post">
-			<input type="text" placedholder="house_id to delete" name="house_id">
+			<select name="house_id">
+				{{#each houses}}
+					<option value="{{house_id}}">{{tower}}</option>
+				{{/each}}
+			</select>
 			<input type="submit" value="Delete House">
 		</form>
 	</div>
@@ -33,7 +37,6 @@
 			<th>colors</th> 
 			<th>animal</th>
 			<th>founder</th>
-			<th>house_id</th>		
 		</thead> 
 		<tbody> 
 			{{#each houses}}
@@ -42,7 +45,6 @@
 				<td>{{colors}}</td>
 				<td>{{animal}}</td>
 				<td>{{founder}}</td>
-				<td>{{house_id}}</td>
 			</tr>
 			{{/each}}
 		</tbody> 
