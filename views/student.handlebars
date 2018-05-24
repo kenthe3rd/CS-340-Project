@@ -39,6 +39,7 @@
 </div>
 
 <div>
+	<h4>Delete Student</h4>
 	<form method="post" action="/student/delete">
 		<select name="student_to_delete">
 		{{#each students}}
@@ -49,6 +50,17 @@
 	</form>
 </div>
 
+<div>
+	<h4>Filter on student dorm</h4>
+	<form method="post" action="/student/filter">
+		<select name="house_id">
+		{{#each houses}}
+			<option value="{{house_id}}">{{tower}}</option>
+		{{/each}}
+		</select>
+		<input type="submit" value="Filter student list">
+	</form>
+</div>
 <div>
 	<h3>Students:</h3>
 	<table border="1">
