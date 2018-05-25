@@ -45,7 +45,17 @@
                 <option value="Elective">Elective</option>
                 <option value="Extra-curricular">Extra-curricular</option>
             </select>
-            <input type="submit" value="Update Class">
+            <input type="submit" value="Update Class Category">
+        </form>
+        <h4>Update existing class's course name</h4>
+            <form action="/class/update" method="post">
+            <select name="class_id">
+                {{#each classes}}
+                    <option value="{{class_id}}">{{course}}</option>
+                {{/each}}
+            </select>
+            <input type="text" name="new_name" placeholder="new name for course">
+            <input type="submit" value="Update Class Name">
         </form>
     </div>
 

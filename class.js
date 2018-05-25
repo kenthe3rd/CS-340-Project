@@ -44,18 +44,34 @@ module.exports = function(){
 
     router.post('/update', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "UPDATE class SET category = ? WHERE class_id = ?";
-        var inserts = [req.body.category, req.body.class_id];
-        if(req.body.category && req.body.class_id){
-            sql = mysql.pool.query(sql, inserts, function(error, results, fields){
-                if(error){
-                    console.log("An error occurred while attempting the update operation");
-                } 
+        if(req.body.category){
+            var sql = "UPDATE class SET category = ? WHERE class_id = ?";
+            var inserts = [req.body.category, req.body.class_id];
+            if(req.body.category && req.body.class_id){
+                sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                    if(error){
+                        console.log("An error occurred while attempting the update operation");
+                    } 
+                    res.redirect('/class');
+                })
+            } else {
                 res.redirect('/class');
-            })
-        } else {
-            res.redirect('/class');
+            }
         }
+         if(req.body.new_name){
+            var sql = "UPDATE class SET course = ? WHERE class_id = ?";
+            var inserts = [req.body.new_name, req.body.class_id];
+            if(req.body.new_name && req.body.class_id){
+                sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+                    if(error){
+                        console.log("An error occurred while attempting the update operation");
+                    } 
+                    res.redirect('/class');
+                })
+            } else {
+                res.redirect('/class');
+            }
+        }       
     })
 
     router.get('/', function(req, res){
